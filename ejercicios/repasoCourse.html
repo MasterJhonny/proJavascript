@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>repaso Clourse</title>
+</head>
+<body>
+    <script>
+        // LIFE
+        (function(){
+            let color = "gree";
+            function render() {
+                console.log(color);
+            }
+            render()
+        })();
+        // funciones que regresan funcciones
+        function makeColor (color) {
+            let messageColor = `The color is ${color}`
+            return function() {
+                console.log(messageColor);
+            }
+        }
+
+        // let greeColor = makeColor('gree')
+        // console.log(greeColor())
+        // variables privates
+
+    //     const valor = {
+    //         cat: 34
+    //     }
+
+    function makeCounter(n) {
+        let count = n
+        return {
+            increase: function () {
+                return ++count
+            },
+            decrease: function () {
+                return --count
+            },
+            getCounter: function () {
+                return count
+            }
+        }
+    }
+
+    let counter = makeCounter(0)
+    
+    </script>
+</body>
+</html>

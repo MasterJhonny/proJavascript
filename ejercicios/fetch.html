@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fetch('https://api.scripture.api.bible/v1/bibles/bibles119', {
+            method: 'GET',
+            headers: {
+                'api-key': 'eb60dd4c6f3224c9b637f6ec2132e378'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.table(data)
+        })
+    </script>
+</body>
+</html>

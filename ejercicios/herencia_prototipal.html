@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia prototipal</title>
+</head>
+<body>
+    <script>
+        function Hero (name) {
+            this.name = name;
+        }
+
+        Hero.prototype.saludar = function() {
+            console.log(`Hi my name is ${this.name}`)
+        }
+
+        const zelda = new Hero('Zelda')
+        // propiedades de la instancia
+        console.log(`name: ${zelda.name}`)
+        // propiedades de la class 
+        console.log(`saludar: ${zelda.saludar}`)
+        // propiedades heredadas como toString
+        console.log(`toString: ${zelda.toString}`)  
+        // hasonwPrototype (de donde viene To string)
+        console.log(`hasonwProperty: ${zelda.hasOwnProperty('name')}`)
+    </script>
+</body>
+</html>

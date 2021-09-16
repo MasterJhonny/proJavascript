@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>repaso</title>
+</head>
+<body>
+    <script>
+        // LIFE..
+        (function(){
+            let color = 'gree'
+            function printColor() {
+                console.log(color)
+            }
+            printColor()
+        })();
+        // funcioners que regresan functiones
+        function makeColorPinter(color) {
+            let colorMessage = `The color is ${color}`;
+            return function() {
+                console.log(colorMessage)
+            }
+        }
+
+        let greeColor = makeColorPinter('gree');
+        // greeColor()
+        // variables privadas
+        function makeCounter() {
+            let count = 0
+            return {
+                increment: function(){
+                    return ++count 
+                },
+                decrement: function(){
+                    return --count 
+                },
+                getCounter: function(){
+                    return console.log(count)
+                }
+            }
+        }
+
+        let counter = makeCounter()
+    </script>
+</body>
+</html>

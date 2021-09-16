@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>como es this</title>
+</head>
+<body>
+    <script>
+        // this in the scope global 
+        console.log(this)
+        // this in the scope function
+        function whoIsThis() {
+            return this
+        }
+        console.log(whoIsThis())
+        // this in the scope function in strict mode
+        function whoIsThisStrict() {
+            'use strict';
+            return this
+        }
+        console.log(whoIsThisStrict())
+        // this in the scope from object
+        const person = {
+            name: 'John',
+            greet: function(){
+                console.log(`hello my name is ${this.name}`)
+            }
+        }
+        person.greet()
+        // this when we take out el this a function
+        let action = person.greet
+        action()
+
+        // this in scope from class
+        function Person (name) {
+            this.name = name
+        }
+
+        Person.prototype.greet = function() {
+            console.log(`I am ${this.name}`)
+            
+        } 
+        let juan = new Person('Juan')
+        juan.greet()
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body>
+    <h3>Metodos call, apply and bind</h3>
+    <div class="botones">
+        <button class="call-to-action">Calcular1</button>
+        <button class="call-to-action">Calcular2</button>
+        <button class="call-to-action">Calcular3</button>
+    </div>
+    <script>
+        // establish this usando call
+        function saludar () {
+            console.log(`hello I am ${this.name} ${this.lastName}`);
+        }
+
+        const juan = {
+            name: 'Juan',
+            lastName: 'Castillo'
+        }
+        
+
+        const action = saludar.bind(juan);
+        action()
+        saludar.call(juan);
+
+        // establish this usando call and pasar argunmentos
+        function caminar (metros, direction) {
+            console.log(`${this.name} camina ${metros} metros en la direction ${direction}`);
+        }
+        caminar.call(juan, 23, 'norte')
+
+        // establish this usando apply and pasar argunmentos
+        caminar.apply(juan, [ 23, 'norte'])
+
+        // establish this usando bind and pasar argunmentos
+        const caminarFull = caminar.bind(juan, 400, "sur")
+        caminarFull()
+
+        // otra form de pasar argun
+        const juanCamina = caminar.bind(juan)
+        juanCamina(400, "sur")
+
+        // cual es mejor, pues es depende la situcaion
+
+        const btns = document.getElementsByClassName("call-to-action")
+
+
+        Array.prototype.forEach.call(btns, btn => {
+            btn.onclick = () => alert("Se feliz uu...") 
+        })
+    </script>
+</body>
+</html>

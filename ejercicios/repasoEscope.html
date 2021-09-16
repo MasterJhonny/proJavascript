@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>repaso escope</title>
+</head>
+<body>
+    <script>
+        // Scope Global
+        // var message = 'Hola Mundo'  
+        // let valor = 'hola que tal' 
+        // const demo = 123
+        // var $ = function(mensaaje) {
+        //     console.log(`hola ${mensaaje}`)
+        // } 
+        
+        // scope de funcction
+        // function imprimirNum() {
+            
+        //     for(var i=0; i < 10; i++){
+        //         function print(n){
+        //             setTimeout(function() {
+        //                 console.log(n)
+        //             }, 100)
+        //         }
+        //         print(i)
+        //     }
+        // }
+        // imprimirNum()
+
+        // scope block
+        function imprimirNum() {
+            
+            for(let i=0; i < 10; i++){
+                setTimeout(function() {
+                    console.log(i)
+                }, 100)
+                
+            }
+        }
+
+        {
+            let valor = 'Hola Mundo Feliz'
+        }
+
+        // scope Module
+        
+        imprimirNum()
+    </script>
+</body>
+</html>

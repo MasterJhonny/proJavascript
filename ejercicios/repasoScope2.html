@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // scope gloval 
+        let fana = 23
+        let cadena = [1,2,3,4,5]
+        var message = 'hola platzi'
+        function $ (message) {
+            console.log('say: ' + message)
+        }
+        // scope DE FUNCTION
+        function printNumber () {
+            for(var i=0; i < 10; i++) {
+                function valor (n) {
+                    setTimeout(() => console.log(n), 200)
+                }
+                valor(i)
+            }
+        }
+        // printNumber()
+        // scope block
+        function printNum() {
+            for(let i=0; i < 10; i++) {
+                setTimeout(() => console.log(i), 200)
+            }
+        }
+        printNum()
+    </script>    
+</body>
+</html>

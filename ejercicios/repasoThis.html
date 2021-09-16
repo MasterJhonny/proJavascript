@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>repaso This</title>
+</head>
+<body>
+    <script>
+        // global scope
+        console.log(this)
+
+        //function scope
+        function whoIsThis() {
+            return this
+        }
+
+        console.log(whoIsThis())
+
+        // modo sctrin
+        function whoIsThisStric() {
+            "use strict";
+            return this
+        }
+        console.log(whoIsThisStric())
+
+        // who is this in on class
+
+        const person = {
+            name: "John",
+            saludar: function() {
+                console.log(`Hola soy ${this.name}`)
+            }
+        }
+        person.saludar()
+        // que pasa cuando sacamos a una function de un objeto se su contexto
+        const action = person.saludar
+        action()
+
+        // this en un contexto de una class 
+        function Persona (name, edad) {
+            this.name = name
+            this.edad = edad
+        }
+
+        Persona.prototype.saludar = function () {
+            // console.log(`Hello My name is ${this.name}`)
+            console.log(this)
+        }
+
+
+        const juan = new Persona('Juan', 27)
+
+        juan.saludar()
+
+    </script>
+</body>
+</html>

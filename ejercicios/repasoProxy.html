@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const Person = {
+            name: '',
+            lastName: '',
+            age: ''
+        }
+
+        const handler = {
+            set(object, key, value){
+                if(Object.keys(object).indexOf(key) === -1){
+                    return console.error(`La propiedad de "${key}" no exite en el object Person`)
+                }
+                if(
+                    (key === 'name' || key === 'lastName') && !(/^[A-Za-zÑñÁáÉáÍíÓóÚúÜü\s]+$/g.test(value))
+                ){
+                    return console.error(`La propiedad de "${key}" solo acepta letras y espacacios en blanco`)
+                }
+                object[key] = value;
+            }
+        }
+
+
+        const juan = new Proxy(Person, handler);
+        juan.name = 'Juan&@##'
+        juan.lastName = 'Mamani'
+        juan.age = 34
+        juan.email = 'user@gmail.com'
+        
+        console.log(juan)
+    </script>
+</body>
+</html>

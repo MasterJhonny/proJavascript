@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>Generators</title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+      // Los generadores son funciones de las que se puede salir y volver a entrar.
+      // Su contexto (asociación de variables) será conservado entre las reentradas.
+      // Cada vez que llamamos next, la ejecución del generador va a continuar hasta el proximo yield
+        function* simpleGereration() {
+            console.log('GENERATION START...!')
+            yield 1
+            yield 2
+            yield 3
+            yield 4
+            console.log('GENERATION END...!')
+        }
+
+        // const gen = simpleGereration()
+ 
+      // Podemos hacer generadores infinitos.
+      function* idMakers() {
+          let id = 1;
+          while(true) {
+            yield id++
+          }
+      }
+      
+      // denbemos cargarlo en otra variable para la ejecución
+      const gen = idMakers()
+
+      // run con .next()
+      gen.next()
+
+      
+   
+
+      // Cuando llamamos next también podemos pasar valores que la función recibe.
+      function* idMakersWihtReset() {
+          let id = 1;
+          let reset
+          while(true) {
+              reset = yield id
+            if(reset){
+                id = 1
+            } else {
+                id++
+            }
+          }
+      }
+      
+      // const gen = idMakersWihtReset()
+      // gen.next(true)
+      
+      // Ahora hagamos un ejemplo un poco más complejo: la secuencia fibonacci
+
+      function* fibonacci() {
+          let a = 1;
+          let b = 1;
+          let c = 0
+          while(true) {
+            // debugger
+            c = a + b;
+            yield c
+            a = b
+            b = c
+          }
+      }
+
+    // const gen = fibonacci()
+
+
+      
+    </script>
+  </body>
+</html>

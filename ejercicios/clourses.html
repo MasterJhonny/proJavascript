@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clousers</title>
+</head>
+<body>
+    <script>
+        // clourses
+        // print color
+        // IIFE
+        (function () {
+            let color = 'green'
+            function printColor(){
+                console.log(color);
+            }
+            printColor()
+        })();
+        // functioines que regresana otra funciones
+        function makeColor(color){
+            let message = `The is color ${color}`
+            return function() {
+                console.log(message)
+            }
+        }
+
+        let greenColor = makeColor('red')
+        console.log(greenColor())
+    </script>
+</body>
+</html>

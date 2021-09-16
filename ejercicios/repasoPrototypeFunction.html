@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body>
+    <h3>Metodos call, apply and bind</h3>
+    <button id="boton">hola</button>
+    <div class="botones">
+        <button class="call-to-action">Calcular1</button>
+        <button class="call-to-action">Calcular2</button>
+        <button class="call-to-action">Calcular3</button>
+    </div>
+    <p id="salida"></p>
+    <script>
+        // establish this usando call
+        function saludar () {
+            console.log(`hello my name is ${this.name} ${this.lastName}`);
+        }
+
+        const juan = {
+            name: 'Juan',
+            lastName: 'Mamani'
+        }
+
+        saludar.call(juan)
+        // establish this usando call and pasar argunmentos
+
+        function caminar (metros, direction) {
+            console.log(`${this.name} camia ${metros} en direction ${direction}`)
+        }
+
+        caminar.call(juan, 23, "norte")
+
+        // establish this usando apply and pasar argunmentos
+        caminar.apply(juan, [27, "sur"])
+
+        // establish this usando bind and pasar argunmentos
+        let juanCamia = caminar.bind(juan)
+        juanCamia(34, "noreste")
+
+        // otra form de pasar argun
+        const daniel = {
+            name: "Daniel", 
+            lastName: "Hafid"
+        }
+
+        let danielSaluda = saludar.bind(daniel) 
+        let juanCam = caminar.bind(daniel, 45, "sureste")
+        juanCam()
+
+
+        // cual es mejor, pues es depende la situcaion
+        const salida = document.querySelector("#salida");
+        (function(){
+            const boton = document.getElementById("boton");
+            // console.log('Hola Mmindillo');
+            function actualizar(){
+                let date = new Date();
+                let hora = date.getHours()
+                let min = date.getMinutes()
+                let sec = date.getSeconds()
+                salida.innerText = `${hora}:${min}:${sec}`
+            }
+            const btns = document.getElementsByClassName("call-to-action");
+            Array.prototype.forEach.call(btns, btn => btn.onclick = () => {
+                let cadena = Object.entries(btns)
+                console.log(cadena)
+                cadena.pop()
+                // location.reload()
+                setTimeout(() => {
+                    alert("Hola mundo")
+                }, 0)
+            });
+            
+    
+            var intrerval = setInterval(actualizar, 1000)
+            console.log("despues del actualizar")
+            boton.onclick = function(){
+                alert("se agrego otro el boton")
+            }
+        })()
+        
+    </script>
+</body>
+</html>
