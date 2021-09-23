@@ -131,6 +131,7 @@ self.addEventListener('fetch', event => {
 
 
   event.respondWith(cacheResponse(request));
+  event.waitUntil(updateCache(request));
 }); // la ruta de los archivos debe esta bien escrita
 
 async function precache() {
@@ -142,6 +143,12 @@ async function cacheResponse(request) {
   const cache = await caches.open(VERSION);
   const response = await cache.match(request);
   return response || fetch(request);
+}
+
+async function updateCache(request) {
+  const cache = await caches.open(VERSION);
+  const response = await fetch(request);
+  return cache.put(request, response);
 }
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -171,7 +178,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55109" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60214" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,6 +1,5 @@
 const salida = document.getElementById('salida');
 
-let date = 0;
 
 const increment = (valor) => {
     // debugger

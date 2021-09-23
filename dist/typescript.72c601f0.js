@@ -118,14 +118,212 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"ejercicios/typescript/index.ts":[function(require,module,exports) {
-console.log("hello Typescript");
+console.log("hello Typescript"); // type boolean
+
+var muted = false;
+muted = true; // type number
+
+var age = 6;
+var numerador = 42;
+var denominador = age;
+var result = numerador / denominador; // type string
+
+var nombre = "Jhonny";
+var saludo = "me llamo " + nombre; // arreglos
+
+var person = new Array();
+person = ['Juan', 'John', 'Maria', 'Isabel'];
+person.push(nombre);
+var peopleNumbers = new Array();
+peopleNumbers.push(nombre);
+peopleNumbers.push(age);
+peopleNumbers.push(1234);
+peopleNumbers.push("maria"); // Enum
+
+var Color;
+
+(function (Color) {
+  Color["red"] = "rojo";
+  Color["green"] = "verde";
+  Color["blue"] = "azul";
+  Color["yellow"] = "amarillo";
+})(Color || (Color = {}));
+
+var colorFibory = Color.blue; // console.log(`my color fabory is ${colorFibory}`);
+// any
+
+var comodin = "Johker";
+comodin = {
+  type: 'salterio'
+};
 
 function add(a, b) {
   return a + b;
 }
 
-var suma = add(23, 23);
-console.log(suma);
+function saludar(nombre) {
+  console.log("hi, Me llamo " + nombre);
+} // saludar("Juan");
+// cadena de Numbers
+
+
+var cadena = [3, 2, "3", 4, 5];
+var valores = ["1", "2", "3", "4", "34"];
+var fail;
+
+(function (fail) {
+  fail[fail["salida"] = 0] = "salida";
+  fail[fail["entrada"] = 1] = "entrada";
+})(fail || (fail = {})); // repaso typescript
+// boolean 
+
+
+var muteado = true;
+muteado = false; // number 
+
+var valor = 23;
+var num1 = 23;
+var fana = num1 / valor; // type string
+
+var palabra = "palabra";
+palabra = "2345"; // Array 
+
+var frutas = new Array();
+frutas.push("manzana");
+frutas.push("pera");
+frutas.push("naranja");
+frutas.push("lima");
+var numerosa = new Array();
+numerosa.push(23);
+numerosa.push(23);
+numerosa.push(90);
+numerosa.push(98);
+numerosa.push(56);
+numerosa.push(34); // multiples tipos de datos
+
+var duoArray = new Array();
+duoArray.push(345);
+duoArray.push("letras");
+duoArray.push(345);
+duoArray.push("fana"); // console.log(duoArray);
+//enum
+
+var lados;
+
+(function (lados) {
+  lados["Arriba"] = "up";
+  lados["Abajo"] = "down";
+  lados["Izquierda"] = "left";
+  lados["Derecha"] = "right";
+})(lados || (lados = {}));
+
+var ladoElejido = lados.Arriba; // console.log(`el lado es: ${ladoElejido}`)
+
+var listaPersonas;
+
+(function (listaPersonas) {
+  listaPersonas["first"] = "Raquel";
+  listaPersonas["second"] = "Monica";
+  listaPersonas["three"] = "Tereza";
+  listaPersonas["four"] = "Felipe";
+})(listaPersonas || (listaPersonas = {}));
+
+var perosnElegida = listaPersonas.second; // console.log(`El nombre es: ${perosnElegida}`);
+// variable comodin any
+
+var cualquierType = "comodin";
+cualquierType = {
+  key: "value"
+}; // type objeto
+
+var objeto = {
+  key: 345,
+  value: "value"
+}; //tuple listaPersonas
+
+var x;
+x = [23, "value"]; // console.log(x[1])
+// function
+
+function suma(a, b) {
+  return a + b;
+}
+
+var val = suma(23, 12); // create add function
+
+function createAdd(b) {
+  return function (a) {
+    return a + b;
+  };
+}
+
+var fourSum = createAdd(34);
+var fiveSum = fourSum(5); // console.log(fiveSum); 
+// parameter optional
+
+function fullName(name, lastName) {
+  if (lastName === void 0) {
+    lastName = "Smith";
+  }
+
+  return name + " " + lastName;
+}
+
+var carlos = fullName("Carlos"); // console.log(carlos);
+// repaso function typescript
+// function
+
+function sumarNumber(a, b) {
+  return a + b;
+}
+
+var valorSumado = sumarNumber(23, 23); // creatdor de sumas
+
+function creadorDeSumas(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+
+var sumarCuatro = creadorDeSumas(4);
+var sumarAdemasSix = sumarCuatro(6); // parametros opcionales or por defecto
+
+function nombreCompleto(name, lastName) {
+  if (lastName === void 0) {
+    lastName = "Villagran";
+  }
+
+  return name + " " + lastName;
+}
+
+var nameFull = nombreCompleto("Carlos"); // console.log(nameFull);
+// interfaces.
+
+var Colorcillo;
+
+(function (Colorcillo) {
+  Colorcillo["red"] = "red";
+  Colorcillo["green"] = "green";
+  Colorcillo["yellow"] = "yellow";
+})(Colorcillo || (Colorcillo = {}));
+
+var rect = {
+  width: 12,
+  height: 20 //color: Colorcillo.yellow
+
+};
+
+function AreaRectangulo(r) {
+  return r.width * r.height;
+}
+
+console.log(AreaRectangulo(rect));
+
+rect.toString = function () {
+  return this.color ? "Un rectangulo de color " + this.color : "Un rectangullo";
+};
+
+console.log(rect.toString());
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -154,7 +352,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55109" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60214" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
