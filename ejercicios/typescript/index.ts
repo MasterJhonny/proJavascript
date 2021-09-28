@@ -212,9 +212,10 @@ interface Rectangulo {
 let rect: Rectangulo = {
     width: 12,
     height: 20,
-    //color: Colorcillo.yellow
+    color: Colorcillo.yellow
 }
 
+//metodo
 function AreaRectangulo (r: Rectangulo): number {
     return r.width * r.height;
 }
@@ -233,12 +234,14 @@ interface Triangulo {
     lado2: number;
     base: number;
     altura?: number;
+    color?: Colorcillo;
 }
 
 let triangulo: Triangulo = {
     lado1: 3,
     lado2: 3,
     base: 3,
+    color: Colorcillo.yellow,
 }
 
 function areaTriangulo(tri: Triangulo): number {
@@ -247,4 +250,11 @@ function areaTriangulo(tri: Triangulo): number {
 }
 
 let areaEquilatero = areaTriangulo(triangulo);
-console.log(areaEquilatero)
+// console.log(areaEquilatero)
+// console.log(triangulo)
+
+triangulo.toString = function() {
+    return this.color ? `un triangulo de color ${this.color}` : 'A triangule ';
+}
+
+// console.log(triangulo.toString())
