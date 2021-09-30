@@ -1,10 +1,31 @@
-import Perro from './Perro';
+import Alumno from "./Alumno";
+
+let juan = new Alumno("Juan", 34, "2do second");
+
+juan.printData();
 
 
 
 
-let masha = new Perro("Masha", "negro", 2);
-console.log(masha);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -42,4 +63,4 @@ console.log(masha);
 // }
 
 // console.log(cua.toString())
-// console.log("hola mundo de vida y de todo lo slados")
+// console.log("hola mundo de vida y de todo lo slados");
